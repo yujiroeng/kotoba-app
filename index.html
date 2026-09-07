@@ -4,50 +4,112 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
+
 <title>ことばアプリ</title>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  padding: 20px;
-  font-family: sans-serif;
-  background: #f5f5f5;
+  padding: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Maru Gothic ProN",
+               "Hiragino Kaku Gothic ProN", sans-serif;
+  background: linear-gradient(180deg, #dff6ff, #fff7fb);
   text-align: center;
+  color: #4b2e20;
+  -webkit-tap-highlight-color: transparent;
 }
 
 h1 {
-  font-size: 32px;
-  margin: 10px 0 20px;
+  font-size: 42px;
+  margin: 5px 0 15px;
+  font-weight: 900;
+}
+
+.subtitle {
+  font-size: 18px;
+  margin-bottom: 15px;
 }
 
 .buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  max-width: 1000px;
+  gap: 14px;
+  max-width: 1100px;
   margin: auto;
 }
 
 button {
-  border: none;
-  border-radius: 25px;
+  position: relative;
+  border: 5px solid white;
+  border-radius: 28px;
+  min-height: 210px;
+  padding: 10px;
   background: white;
-  padding: 20px 10px;
-  min-height: 190px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  font-size: 28px;
-  font-weight: bold;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  font-family: inherit;
+  font-size: 30px;
+  font-weight: 900;
+  color: #43291f;
   cursor: pointer;
+  transition: transform 0.1s;
 }
 
 button:active {
-  transform: scale(0.95);
+  transform: scale(0.94);
 }
 
-.emoji {
+.illustration {
   display: block;
-  font-size: 90px;
-  margin-bottom: 10px;
+  font-size: 100px;
+  line-height: 1.1;
+  margin: 8px 0;
+}
+
+.speaker {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #248be8;
+  color: white;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ボタンの色 */
+.food { background: #ffe5ec; }
+.sleep { background: #fff1a8; }
+.toilet { background: #dff3ff; }
+.play { background: #dfffc9; }
+
+.water { background: #d7f8ff; }
+.hug { background: #ffdce9; }
+.give { background: #fff0d1; }
+.love { background: #eee0ff; }
+
+.no { background: #e8e9ff; }
+.sad { background: #dceeff; }
+.pain { background: #ddf8e2; }
+.dad { background: #dff1ff; }
+.mom { background: #ffe2ec; }
+
+.bottom {
+  max-width: 900px;
+  margin: 20px auto 5px;
+  background: white;
+  border-radius: 25px;
+  padding: 18px;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
 
 @media (max-width: 900px) {
@@ -57,17 +119,42 @@ button:active {
 }
 
 @media (max-width: 650px) {
+  body {
+    padding: 8px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+
   .buttons {
     grid-template-columns: repeat(2, 1fr);
+    gap: 9px;
   }
 
   button {
-    min-height: 170px;
-    font-size: 25px;
+    min-height: 175px;
+    border-radius: 22px;
+    font-size: 23px;
+    border-width: 4px;
   }
 
-  .emoji {
+  .illustration {
     font-size: 75px;
+  }
+
+  .speaker {
+    width: 40px;
+    height: 40px;
+    font-size: 21px;
+  }
+
+  .bottom {
+    font-size: 19px;
   }
 }
 </style>
@@ -75,78 +162,98 @@ button:active {
 
 <body>
 
-<h1>ことば</h1>
+<h1>☁️ ことばアプリ ☁️</h1>
+<div class="subtitle">おしたら こえが でるよ 🔊</div>
 
 <div class="buttons">
 
-<button onclick="speak('ごはん')">
-<span class="emoji">🍚</span>
-ごはん
+<button class="food" onclick="speak('ごはん')">
+  <span class="speaker">🔊</span>
+  <span class="illustration">🍚</span>
+  ごはん
 </button>
 
-<button onclick="speak('ねむたい')">
-<span class="emoji">😴</span>
-ねる
+<button class="sleep" onclick="speak('ねむたい')">
+  <span class="speaker">🔊</span>
+  <span class="illustration">😴</span>
+  ねる
 </button>
 
-<button onclick="speak('おしっこ')">
-<span class="emoji">🚽</span>
-トイレ
+<button class="toilet" onclick="speak('おしっこ')">
+  <span class="speaker">🔊</span>
+  <span class="illustration">🚽</span>
+  トイレ
 </button>
 
-<button onclick="speak('遊ぶ')">
-<span class="emoji">🧸</span>
-遊ぶ
+<button class="play" onclick="speak('遊ぶ')">
+  <span class="speaker">🔊</span>
+  <span class="illustration">🧸</span>
+  遊ぶ
 </button>
 
-<button onclick="speak('おみず')">
-<span class="emoji">💧</span>
-おみず
+<button class="water" onclick="speak('おみず')">
+  <span class="speaker">🔊</span>
+  <span class="illustration">💧</span>
+  おみず
 </button>
 
-<button onclick="speak('だっこ')">
-<span class="emoji">🤗</span>
-だっこ
+<button class="hug" onclick="speak('だっこ')">
+  <span class="speaker">🔊</span>
+  <span class="illustration">🤗</span>
+  だっこ
 </button>
 
-<button onclick="speak('ちょうだい')">
-<span class="emoji">👍</span>
-ちょうだい
+<button class="give" onclick="speak('ちょうだい')">
+  <span class="speaker">🔊</span>
+  <span class="illustration">👍</span>
+  ちょうだい
 </button>
 
-<button onclick="speak('すき')">
-<span class="emoji">❤️</span>
-すき
+<button class="love" onclick="speak('すき')">
+  <span class="speaker">🔊</span>
+  <span class="illustration">❤️</span>
+  すき
 </button>
 
-<button onclick="speak('いや')">
-<span class="emoji">😣</span>
-いや
+<button class="no" onclick="speak('いや')">
+  <span class="speaker">🔊</span>
+  <span class="illustration">😣</span>
+  いや
 </button>
 
-<button onclick="speak('かなしい')">
-<span class="emoji">😢</span>
-かなしい
+<button class="sad" onclick="speak('かなしい')">
+  <span class="speaker">🔊</span>
+  <span class="illustration">😢</span>
+  かなしい
 </button>
 
-<button onclick="speak('いたい')">
-<span class="emoji">🤕</span>
-いたい
+<button class="pain" onclick="speak('いたい')">
+  <span class="speaker">🔊</span>
+  <span class="illustration">🤕</span>
+  いたい
 </button>
 
-<button onclick="speak('パパ')">
-<span class="emoji">👨</span>
-パパ
+<button class="dad" onclick="speak('パパ')">
+  <span class="speaker">🔊</span>
+  <span class="illustration">👨</span>
+  パパ
 </button>
 
-<button onclick="speak('ママ')">
-<span class="emoji">👩</span>
-ママ
+<button class="mom" onclick="speak('ママ')">
+  <span class="speaker">🔊</span>
+  <span class="illustration">👩</span>
+  ママ
 </button>
 
 </div>
 
+<div class="bottom">
+  🔊 ボタンをタップすると声が出ます<br>
+  🌈 たくさん つかってね！
+</div>
+
 <script>
+
 function speak(text) {
 
   if (!window.speechSynthesis) {
@@ -165,6 +272,7 @@ function speak(text) {
 
   window.speechSynthesis.speak(voice);
 }
+
 </script>
 
 </body>
