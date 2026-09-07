@@ -40,6 +40,28 @@ h1 {
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
   background: white;
 }
+.image-area {
+  position: relative;
+  width: min(100%, 900px);
+  margin: 0 auto 20px;
+}
+
+.image-area .main-image {
+  width: 100%;
+  margin: 0;
+}
+
+.tap-food {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 25%;
+  height: 25%;
+  opacity: 0;
+  border: none;
+  background: transparent;
+}
+  
 /* 言葉ボタン */
 .buttons {
   display: grid;
@@ -151,7 +173,14 @@ button:active {
 </div>
 <!-- 以前作った1枚のイラスト -->
 
-<img src="./90CC2A43-298A-48E0-9499-A5C2D08FF1B6.png" class="main-image" alt="ことばのイラスト">
+<div class="image-area">
+  <img
+    class="main-image"
+    src="./90CC2A43-298A-48E0-9499-A5C2D08FF1B6.png"
+    alt="ことばのイラスト">
+
+  <button class="tap-food" onclick="speak('ごはん')"></button>
+</div>
 
 <div class="buttons">
 <button class="food" onclick="speak('ごはん')">
